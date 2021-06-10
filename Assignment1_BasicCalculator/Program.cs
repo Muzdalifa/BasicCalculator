@@ -30,23 +30,17 @@ namespace Assignment1_BasicCalculator
                 switch (userInput)
                 {
                     case "1":
-                        Num1 = GetFirstNumber();
-                        Num2 = GetSecondNumber();
-                        Addition(Num1, Num2);                        
+                        Addition(GetNumberFromUser("first"), GetNumberFromUser("second"));                        
                         break;
                     case "2":
-                        Num1 = GetFirstNumber();
-                        Num2 = GetSecondNumber();
-                        Substraction(Num1, Num2);
+                        Substraction(GetNumberFromUser("first"), GetNumberFromUser("second"));
                         break;
                     case "3":
-                        Num1 = GetFirstNumber();
-                        Num2 = GetSecondNumber(); 
-                        Multiplication(Num1, Num2);
+                        Multiplication(GetNumberFromUser("first"), GetNumberFromUser("second"));
                         break;
                     case "4":
-                        Num1 = GetFirstNumber();
-                        Num2 = GetSecondNumber();
+                        Num1 = GetNumberFromUser("first");
+                        Num2 = GetNumberFromUser("second");
 
                         if (Num2 != 0)
                         {
@@ -58,7 +52,7 @@ namespace Assignment1_BasicCalculator
                             do
                             {
                                 Console.WriteLine("No division by 0! Please enter correct number");
-                                Num2 = GetSecondNumber();
+                                Num2 = GetNumberFromUser("second");
                             } while (Num2 == 0);
                             
                             Division(Num1, Num2);
@@ -77,41 +71,23 @@ namespace Assignment1_BasicCalculator
         }
 
         //Function to get first number from the user
-        static double GetFirstNumber()
+        static double GetNumberFromUser(string Number)
         {
-            double Num1;
             //set flag to restrict the user to enter only numbers
             bool flag = false;
+            double Num;
             do
             {
-                Console.Write("Please enter the first number : ");
-                flag = double.TryParse(Console.ReadLine(), out Num1);
+                Console.Write($"Please enter the {Number} number : ");
+                flag = double.TryParse(Console.ReadLine(), out Num);
                 if(!flag)
                 {
                     Console.WriteLine("The number you enterd is not valid! Please enter valid number.");
                 }
             } while (!flag);
             
-            return Num1;                      
+            return Num;                      
 
-        }
-
-        //Function to get first number from the user
-        static double GetSecondNumber()
-        {
-            double Num2;
-            bool flag = false;
-            do
-            {
-                Console.Write("Please enter the second number: ");
-                flag = double.TryParse(Console.ReadLine(), out Num2);
-                if (!flag)
-                {
-                    Console.WriteLine("The number you enterd is not valid! Please enter valid number.");
-                }
-            } while (!flag);
-            
-            return Num2;                        
         }
 
         //Function to add two numbers
