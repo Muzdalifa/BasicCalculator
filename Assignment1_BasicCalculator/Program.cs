@@ -10,11 +10,10 @@ namespace Assignment1_BasicCalculator
             double Num1;
             double Num2;
 
-            Console.WriteLine("Please select operation you want to perform from the menu below");
-
             do
-            {               
-                
+            {
+                Console.WriteLine("Please select operation you want to perform from the menu below :");
+
                 Console.WriteLine("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
                 Console.WriteLine("¤                 Basic Calculator                  ¤");
                 Console.WriteLine("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
@@ -59,21 +58,33 @@ namespace Assignment1_BasicCalculator
                             Console.WriteLine("No division by 0");
                             break;
                         }
+                    case "5":
+                        Console.WriteLine("¤¤¤¤¤¤¤¤¤¤Thank you for using our calcuator¤¤¤¤¤¤¤¤¤¤");
+                        break;
                     default:
                         Console.WriteLine("You enter the wrong choice! Please enter the value among the given menu");
                         break;
                 }
 
             } while (userInput != "5");
-            
         }
 
         //Function to get first number from the user
         static double GetFirstNumber()
         {
-            double Num1 = 0;
-            Console.WriteLine("Please enter the first number");
-            double.TryParse(Console.ReadLine(), out Num1);
+            double Num1;
+            //set flag to restrict the user to enter only numbers
+            bool flag = false;
+            do
+            {
+                Console.Write("Please enter the first number : ");
+                flag = double.TryParse(Console.ReadLine(), out Num1);
+                if(!flag)
+                {
+                    Console.WriteLine("The number you enterd is not valid! Please enter valid number.");
+                }
+            } while (!flag);
+            
             return Num1;                      
 
         }
@@ -82,8 +93,17 @@ namespace Assignment1_BasicCalculator
         static double GetSecondNumber()
         {
             double Num2;
-            Console.WriteLine("Please enter the second number");
-            double.TryParse(Console.ReadLine(), out Num2);
+            bool flag = false;
+            do
+            {
+                Console.Write("Please enter the second number: ");
+                flag = double.TryParse(Console.ReadLine(), out Num2);
+                if (!flag)
+                {
+                    Console.WriteLine("The number you enterd is not valid! Please enter valid number.");
+                }
+            } while (!flag);
+            
             return Num2;                        
         }
 
@@ -110,7 +130,5 @@ namespace Assignment1_BasicCalculator
         {
             Console.WriteLine($"{Num1} / {Num2} = {Num1 / Num2} ");
         }
-
-
     }
 }
