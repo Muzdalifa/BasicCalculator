@@ -55,7 +55,14 @@ namespace Assignment1_BasicCalculator
                         }
                         else
                         {
-                            Console.WriteLine("No division by 0");
+                            do
+                            {
+                                Console.WriteLine("No division by 0! Please enter correct number");
+                                Num2 = GetSecondNumber();
+                            } while (Num2 == 0);
+                            
+                            Division(Num1, Num2);
+
                             break;
                         }
                     case "5":
