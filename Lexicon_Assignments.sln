@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment1_BasicCalculator", "Assignment1_BasicCalculator\Assignment1_BasicCalculator.csproj", "{FA865ECC-A49E-4FDD-8D2B-308398CD9F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment1_BasicCalculator", "Assignment1_BasicCalculator\Assignment1_BasicCalculator.csproj", "{FA865ECC-A49E-4FDD-8D2B-308398CD9F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assigment1_BasicCalculator.Test", "Assigment1_BasicCalculator.Test\Assigment1_BasicCalculator.Test.csproj", "{CA6C1335-11CB-4124-9AD4-3B69AA102A3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FA865ECC-A49E-4FDD-8D2B-308398CD9F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA865ECC-A49E-4FDD-8D2B-308398CD9F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA865ECC-A49E-4FDD-8D2B-308398CD9F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6C1335-11CB-4124-9AD4-3B69AA102A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6C1335-11CB-4124-9AD4-3B69AA102A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6C1335-11CB-4124-9AD4-3B69AA102A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6C1335-11CB-4124-9AD4-3B69AA102A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
