@@ -2,116 +2,186 @@
 
 namespace Assignment1_BasicCalculator
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            string userInput;
-            double Num1;
-            double Num2;
-
+            string userChoice;
             do
             {
+                Console.Title = "Basic calculator";
+
                 Console.WriteLine("Please select operation you want to perform from the menu below :");
 
                 Console.WriteLine("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
                 Console.WriteLine("¤                 Basic Calculator                  ¤");
                 Console.WriteLine("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
                 Console.WriteLine("¤ 1. Addition                                       ¤");
-                Console.WriteLine("¤ 2. Substraction                                   ¤");
-                Console.WriteLine("¤ 3. Multiplication                                 ¤");
-                Console.WriteLine("¤ 4. Division                                       ¤");
-                Console.WriteLine("¤ 5. Quit                                           ¤");
+                Console.WriteLine("¤ 2. Addition(array)                                ¤");
+                Console.WriteLine("¤ 3. Substraction                                   ¤");
+                Console.WriteLine("¤ 4. Substraction(array)                            ¤");
+                Console.WriteLine("¤ 5. Multiplication                                 ¤");
+                Console.WriteLine("¤ 6. Division                                       ¤");
+                Console.WriteLine("¤ 7. Quit                                           ¤");
                 Console.WriteLine("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
 
                 Console.Write("Enter choice : ");
-                userInput = Console.ReadLine();
+                //userChoice = CheckUserChoice(Console.ReadLine());
+                userChoice = Console.ReadLine();
 
-                switch (userInput)
+                if (userChoice == "1" || userChoice == "3" || userChoice == "5" || userChoice == "6")
                 {
-                    case "1":
-                        Addition(GetNumberFromUser("first"), GetNumberFromUser("second"));                        
-                        break;
-                    case "2":
-                        Substraction(GetNumberFromUser("first"), GetNumberFromUser("second"));
-                        break;
-                    case "3":
-                        Multiplication(GetNumberFromUser("first"), GetNumberFromUser("second"));
-                        break;
-                    case "4":
-                        Num1 = GetNumberFromUser("first");
-                        Num2 = GetNumberFromUser("second");
-
-                        if (Num2 != 0)
-                        {
-                            Division(Num1, Num2);
-                            break;
-                        }
-                        else
-                        {
-                            do
-                            {
-                                Console.WriteLine("No division by 0! Please enter correct number");
-                                Num2 = GetNumberFromUser("second");
-                            } while (Num2 == 0);
-                            
-                            Division(Num1, Num2);
-
-                            break;
-                        }
-                    case "5":
-                        Console.WriteLine("¤¤¤¤¤¤¤¤¤¤Thank you for using our calcuator¤¤¤¤¤¤¤¤¤¤");
-                        break;
-                    default:
-                        Console.WriteLine("You enter the wrong choice! Please enter the value among the given menu");
-                        break;
+                    SwitchUserChoice(userChoice, GetNumberFromUser("first"), GetNumberFromUser("second"));
+                }
+                else
+                {
+                    SwitchUserChoice(userChoice, 0, 0);
                 }
 
-            } while (userInput != "5");
+            } while (userChoice != "7");
+        }
+
+        static public int CheckUserChoice(string userChoice)
+        {
+            int convertUserChoice = 0;
+            try
+            {
+                convertUserChoice = Convert.ToInt32(userChoice);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Bad user input");
+
+            }
+
+            return convertUserChoice;
         }
 
         //Function to get first number from the user
-        static double GetNumberFromUser(string Number)
+        public static double GetNumberFromUser(string what)
         {
             //set flag to restrict the user to enter only numbers
             bool flag = false;
-            double Num;
+            double number;
             do
             {
-                Console.Write($"Please enter the {Number} number : ");
-                flag = double.TryParse(Console.ReadLine(), out Num);
-                if(!flag)
+                Console.Write($"Please enter the {what} number : ");
+                flag = double.TryParse(Console.ReadLine(), out number);
+                if (!flag)
                 {
                     Console.WriteLine("The number you enterd is not valid! Please enter valid number.");
                 }
             } while (!flag);
-            
-            return Num;                      
 
+            return number;
+
+        }
+
+        // select user choice function
+        public static void SwitchUserChoice(string userInput, double firstNumber, double secondNumber)
+        {
+            //Array to test case 2 and case 4
+            double[] arrayNumber = new double[] { -3, 3 };
+
+            switch (userInput)
+            {
+                case "1":
+                    Console.WriteLine($"{firstNumber} + {secondNumber} = {Addition(firstNumber, secondNumber)}");
+                    break;
+                case "2":
+                    Console.Write($"The sum of array [");
+                    for (int i = 0; i < arrayNumber.Length; i++)
+                    {
+                        Console.Write($"{arrayNumber[i]},");
+                    }
+                    Console.WriteLine($"] = {Addition(arrayNumber)}");
+                    break;
+                case "3":
+                    Console.WriteLine($"{firstNumber} - {secondNumber} = {Substraction(firstNumber, secondNumber)}");
+                    break;
+                case "4":
+                    Console.Write($"The substraction of array [");
+                    for (int i = 0; i < arrayNumber.Length; i++)
+                    {
+                        Console.Write($"{arrayNumber[i]},");
+                    }
+                    Console.WriteLine($"] = {Substraction(arrayNumber)}");
+                    break;
+                case "5":
+                    Console.WriteLine($"{firstNumber} * {secondNumber} = {Multiplication(firstNumber, secondNumber)}");
+                    break;
+                case "6":
+                    if (secondNumber == 0)
+                    {
+                        do
+                        {
+                            Console.WriteLine("You can not divide by zero");
+                            secondNumber = GetNumberFromUser("second");
+                        } while (secondNumber == 0);
+                    }
+                    Console.WriteLine($"{firstNumber} / {secondNumber} = {Division(firstNumber, secondNumber)}");
+                    break;
+                case "7":
+                    Console.WriteLine("¤¤¤¤¤¤¤¤¤¤Thank you for using our calcuator¤¤¤¤¤¤¤¤¤¤");
+                    break;
+                default:
+                    Console.WriteLine("You entered the wrong choice! Please enter the value among the given menu");
+                    break;
+            }
+        }
+
+
+        //Function to add two numbers
+        public static double Addition(double firstNumber, double secondNumber)
+        {
+            return firstNumber + secondNumber;
         }
 
         //Function to add two numbers
-        static void Addition(double Num1, double Num2)
+        public static double Addition(double[] arrayNum)
         {
-            Console.WriteLine($"{Num1} + {Num2} = {Num1 + Num2} ");
+            double sum = arrayNum[0];
+            for (int i = 1; i < arrayNum.Length; i++)
+            {
+                sum = sum + arrayNum[i];
+            }
+            return sum;
         }
 
         //Function to substract two numbers
-        static void Substraction(double Num1, double Num2)
+        public static double Substraction(double firstNumber, double secondNumber)
         {
-            Console.WriteLine($"{Num1} - {Num2} = {Num1 - Num2} ");
+            return firstNumber - secondNumber;
+        }
+
+        //Function to add two numbers
+        public static double Substraction(double[] arrayNum)
+        {
+            double sum = arrayNum[0];
+            for (int i = 1; i < arrayNum.Length; i++)
+            {
+                sum = sum - arrayNum[i];
+            }
+            return sum;
         }
 
         //Function to multiply two numbers
-        static void Multiplication(double Num1, double Num2)
+        public static double Multiplication(double firstNumber, double secondNumber)
         {
-            Console.WriteLine($"{Num1} * {Num2} = {Num1 * Num2} ");
+            return firstNumber * secondNumber;
         }
 
         //Function to divide two numbers
-        static void Division(double Num1, double Num2)
+        public static double Division(double firstNumber, double secondNumber)
         {
-            Console.WriteLine($"{Num1} / {Num2} = {Num1 / Num2} ");
+            if (secondNumber == 0)
+            {
+                throw new DivideByZeroException("You can not divide by zero.");
+            }
+
+            return firstNumber / secondNumber;
+
         }
     }
 }
