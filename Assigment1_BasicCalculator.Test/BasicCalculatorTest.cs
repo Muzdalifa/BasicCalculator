@@ -4,7 +4,7 @@ using Assignment1_BasicCalculator;
 
 namespace Assigment1_BasicCalculator.Test
 {
-    public class ProgramTest
+    public class BasicCalculatorTest
     {
         [Theory]
         [InlineData(1, 2, 3)]
@@ -16,7 +16,7 @@ namespace Assigment1_BasicCalculator.Test
         public void AddTwoNumbersCorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Addition(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Addition(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -28,7 +28,7 @@ namespace Assigment1_BasicCalculator.Test
         public void AddTwoNumbersIncorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Addition(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Addition(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -44,7 +44,7 @@ namespace Assigment1_BasicCalculator.Test
         public void SubstractTwoNumbersCorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Substraction(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Substraction(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -57,7 +57,7 @@ namespace Assigment1_BasicCalculator.Test
         public void SubstractTwoNumbersIncorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Substraction(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Substraction(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -72,7 +72,7 @@ namespace Assigment1_BasicCalculator.Test
         public void MultiplyTwoNumbersCorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Multiplication(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Multiplication(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -86,7 +86,7 @@ namespace Assigment1_BasicCalculator.Test
         public void MultiplyTwoNumbersIncorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Multiplication(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Multiplication(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -99,7 +99,7 @@ namespace Assigment1_BasicCalculator.Test
         public void DivideTwoNumbersCorrect(double firstNumber, double secondNumber, double expected)
         {
             //Act
-            double result = Program.Division(firstNumber, secondNumber);
+            double result = Assignment1_BasicCalculator.BasicCalculator.Division(firstNumber, secondNumber);
 
             //Assert
             Assert.Equal(expected, result);
@@ -109,7 +109,7 @@ namespace Assigment1_BasicCalculator.Test
         public void DivideByZeroThrowException()
         {
             //Act
-            DivideByZeroException result = Assert.Throws<DivideByZeroException>(() => Program.Division(7, 0));
+            DivideByZeroException result = Assert.Throws<DivideByZeroException>(() => Assignment1_BasicCalculator.BasicCalculator.Division(7, 0));
 
             Assert.Equal("You can not divide by zero.", result.Message);
         }
@@ -123,7 +123,7 @@ namespace Assigment1_BasicCalculator.Test
         {
             //
             //Assert
-            Assert.Equal(expected, Program.Addition(arrayNumber));
+            Assert.Equal(expected, Assignment1_BasicCalculator.BasicCalculator.Addition(arrayNumber));
         }
 
         [Theory]
@@ -133,7 +133,7 @@ namespace Assigment1_BasicCalculator.Test
         public void SubstractArrayCorrect(double[] arrayNumber, double expected)
         {
             //Assert
-            Assert.Equal(expected, Program.Substraction(arrayNumber));
+            Assert.Equal(expected, Assignment1_BasicCalculator.BasicCalculator.Substraction(arrayNumber));
         }
 
     }

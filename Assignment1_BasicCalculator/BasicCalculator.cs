@@ -2,7 +2,7 @@
 
 namespace Assignment1_BasicCalculator
 {
-    public class Program
+    public class BasicCalculator
     {
         static void Main(string[] args)
         {
