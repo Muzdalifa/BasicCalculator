@@ -82,7 +82,7 @@ namespace Assignment1_BasicCalculator
         public static void SwitchUserChoice(string userInput, double firstNumber, double secondNumber)
         {
             //Array to test case 2 and case 4
-            double[] arrayNumber = new double[] { -3, 3 };
+            double[] arrayNumber = new double[] {3,-3};
 
             switch (userInput)
             {
@@ -141,6 +141,10 @@ namespace Assignment1_BasicCalculator
         //Function to add two numbers
         public static double Addition(double[] arrayNum)
         {
+            if (arrayNum.Length == 0)
+            {
+                throw new ArgumentNullException("You enterd en empty array.");
+            }
             double sum = arrayNum[0];
             for (int i = 1; i < arrayNum.Length; i++)
             {
@@ -158,6 +162,11 @@ namespace Assignment1_BasicCalculator
         //Function to add two numbers
         public static double Substraction(double[] arrayNum)
         {
+            if (arrayNum.Length == 0)
+            {
+                throw new ArgumentNullException("You enterd en empty array.");
+            }
+
             double sum = arrayNum[0];
             for (int i = 1; i < arrayNum.Length; i++)
             {
